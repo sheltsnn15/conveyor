@@ -1,0 +1,18 @@
+{
+  "sqltools.connections": [
+    {
+      "name": "Local SQL Server (Docker)",
+      "driver": "MSSQL",
+      "server": "localhost",
+      "port": 1433,
+      "database": "master",
+      "username": "sa",
+      "askForPassword": true,
+      "mssqlOptions": {
+        "encrypt": true,
+        "trustServerCertificate": true
+      }
+    }
+  ],
+  "postman.settings.dotenv-detection-notification-visibility": false
+}

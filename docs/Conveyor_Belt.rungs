@@ -1,0 +1,43 @@
+version: 2
+aoi:
+  name: Conveyor_Belt
+  description: ""
+  tags:
+    input:
+      - name: StartPB
+        dataType: BOOL
+      - name: StopPB
+        dataType: BOOL
+      - name: EStop_OK
+        dataType: BOOL
+      - name: AutoStop_Enabled
+        dataType: BOOL
+    output:
+      - name: Motor_Run
+        dataType: BOOL
+    local:
+      - name: Permissive_OK
+        dataType: BOOL
+      - name: Run_Latch
+        dataType: BOOL
+      - name: T_AutoStop
+        dataType: TIMER
+        defaultValue:
+          PRE: 30
+  routines:
+    Logic:
+      type: ld
+      content: |-
+        XIC(EStop_OK)XIC(StopPB)OTE(Permissive_OK);
+        XIC(Permissive_OK)[XIC(StartPB),XIC(Run_Latch)]XIO(T_AutoStop.DN)OTE(Run_Latch);
+        XIC(Run_Latch)XIC(AutoStop_Enabled)TON(T_AutoStop);
+        XIC(Run_Latch)XIC(Permissive_OK)OTE(Motor_Run);
+  testing:
+    content: |-
+      import { describe, it, expect } from 'vitest';
+
+      describe('Conveyor_Belt AOI Tests', () => {
+        it('should execute basic functionality', () => {
+          const result = AOIExecutionService.compile('// Your AOI logic here');
+        });
+      });

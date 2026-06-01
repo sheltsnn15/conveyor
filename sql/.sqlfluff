@@ -1,0 +1,5 @@
+[sqlfluff]
+dialect = tsql
+
+[sqlfluff:rules]
+# Optional: customize rules if needed

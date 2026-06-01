@@ -1,0 +1,38 @@
+-- What is the average order value per customer ?
+--Show the five customers with the least average values.
+USE AdventureWorks2022
+GO;
+-- SELECT TOP 5 p.FirstName + ' ' + p.LastName AS Customer,
+-- SUM(soh.TotalDue) AS TotalRevenue
+-- FROM Sales.SalesOrderHeader AS soh
+-- JOIN Sales.SalesPerson sp ON soh.SalesPersonID = sp.BusinessEntityID
+-- JOIN Person.Person p ON sp.BusinessEntityID = p.BusinessEntityID
+-- WHERE YEAR(OrderDate) = (
+-- 		SELECT MAX(YEAR(OrderDate))
+-- 		FROM Sales.SalesOrderHeader
+-- 	)
+-- GROUP BY p.FirstName,
+-- 	p.LastName
+-- ORDER BY TotalRevenue DESC;
+-- SELECT TOP 10 *
+-- FROM Sales.Customer c
+-- WHERE c.PersonID IS NOT NULL;
+-- SELECT TOP 5 c.CustomerID,
+-- 	COALESCE (
+-- 		p.FirstName + ' ' + p.LastName,
+-- 		s.Name,
+-- 		CONCAT ('CustomerID ', c.CustomerID)
+-- 	) AS CustomerName,
+-- 	AVG (soh.SubTotal) AS AOV,
+-- 	COUNT (*) AS OrdersCount
+-- FROM Sales.Customer AS c
+-- 	JOIN Sales.SalesOrderHeader AS soh ON soh.CustomerID = c.CustomerID
+-- 	LEFT JOIN Person.Person p ON p.BusinessEntityID = c.PersonID
+-- 	LEFT JOIN Sales.Store s ON s.BusinessEntityID = c.StoreID
+-- WHERE soh.SubTotal IS NOT NULL
+-- GROUP BY c.CustomerID,
+-- 	p.FirstName,
+-- 	p.LastName,
+-- 	s.Name
+-- HAVING COUNT (*) > 1
+-- ORDER BY AOV ASC;
